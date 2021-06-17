@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#010b17"
+    tools:context=".EditImageActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleMargin="3dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_back"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="13dp" />
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageView
+        android:id="@+id/dots"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/dotstwo"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.615" />
+
+    <ImageView
+        android:id="@+id/undoButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="undo"
+        app:layout_constraintBottom_toBottomOf="@+id/dots"
+        app:layout_constraintEnd_toStartOf="@+id/dots"
+        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintStart_toStartOf="@+id/toolbar2"
+        app:layout_constraintTop_toTopOf="@+id/dots"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/undo" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="387dp"
+        android:layout_height="448dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2">
+
+
+        <ImageView
+            android:id="@+id/editImageView"
+            android:layout_width="409dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:scaleType="fitCenter"
+            android:visibility="visible" />
+
+    </RelativeLayout>
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="410dp"-->
+<!--        android:layout_height="104dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/toolbar2">-->
+
+<!--        <Button-->
+<!--            android:id="@+id/undoButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="undo"-->
+<!--            android:text="Undo"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/rotateButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="5dp"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:layout_marginEnd="7dp"-->
+<!--            android:layout_marginRight="7dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="rotate"-->
+<!--            android:text="Rotate"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/cropButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="7dp"-->
+<!--            android:layout_marginRight="7dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="crop"-->
+<!--            android:text="Crop"-->
+<!--            android:textSize="12sp" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/saveButton"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="save"-->
+<!--            android:text="Save"-->
+<!--            android:textSize="12sp" />-->
+<!--    </LinearLayout>-->
+
+
+<!--    <RadioGroup-->
+<!--        android:id="@+id/radioGroup"-->
+<!--        android:layout_width="263dp"-->
+<!--        android:layout_height="41dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/relativeLayout"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/cropButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginEnd="@dimen/profile_radio_button_marginStartEnd"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/text_selectoredit"-->
+<!--            android:button="@null"-->
+<!--            android:fontFamily="@font/fredoka_one"-->
+<!--            android:gravity="center"-->
+<!--            android:onClick="crop"-->
+<!--            android:text="Crop"-->
+<!--            android:textColor="@drawable/editbutton_selector"-->
+<!--            android:textSize="20sp"-->
+<!--            tools:ignore="RtlCompat" />-->
+
+
+<!--        <RadioButton-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginEnd="@dimen/profile_radio_button_marginStartEnd"-->
+<!--            android:layout_weight="1.5"-->
+<!--            android:button="@null"-->
+<!--            android:clickable="false"-->
+<!--            tools:ignore="RtlCompat" />-->
+
+<!--        <RadioButton-->
+<!--            android:id="@+id/rotateButton"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginEnd="@dimen/profile_radio_button_marginStartEnd"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/text_selectoredit"-->
+<!--            android:button="@null"-->
+<!--            android:fontFamily="@font/fredoka_one"-->
+<!--            android:gravity="center"-->
+<!--            android:onClick="rotate"-->
+<!--            android:text="Rotate"-->
+<!--            android:textColor="@drawable/editbutton_selector"-->
+<!--            android:textSize="20sp"-->
+<!--            tools:ignore="RtlCompat" />-->
+<!--    </RadioGroup>-->
+
+
+    <FrameLayout
+        android:id="@+id/cropButton"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/curved"
+        android:onClick="crop"
+        app:layout_constraintBottom_toBottomOf="@+id/rotateButton"
+        app:layout_constraintEnd_toStartOf="@+id/rotateButton"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rotateButton">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_crop" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/rotateButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginLeft="188dp"
+        android:layout_marginEnd="90dp"
+        android:layout_marginRight="90dp"
+        android:background="@drawable/curved"
+        android:onClick="rotate"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cropButton"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintVertical_bias="0.53">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_rotate" />
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="350dp"
+            android:layout_height="78dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/curved"
+            android:fontFamily="@font/fredoka_one"
+            android:onClick="save"
+            android:text="Save"
+            android:textColor="#010B17"
+            android:textSize="20sp"/>
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
