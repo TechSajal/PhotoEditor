@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ImageEditor</string>
+    <string name="edited_image">Edited Image</string>
+    <string name="gallary">Gallary</string>
+    <string name="selfie">Selfie</string>
+    <string name="choose_or_take">Choose or take</string>
+    <string name="a_picture">a picture</string>
+    <string name="save">Save</string>
 </resources>

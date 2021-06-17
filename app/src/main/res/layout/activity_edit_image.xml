@@ -23,7 +23,8 @@
             android:layout_height="30dp"
             android:src="@drawable/ic_back"
             tools:layout_editor_absoluteX="16dp"
-            tools:layout_editor_absoluteY="13dp" />
+            tools:layout_editor_absoluteY="13dp"
+            tools:ignore="ContentDescription" />
 
 
     </androidx.appcompat.widget.Toolbar>
@@ -38,7 +39,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/toolbar2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar2"
-        app:layout_constraintVertical_bias="0.615" />
+        app:layout_constraintVertical_bias="0.615"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/undoButton"
@@ -51,7 +53,8 @@
         app:layout_constraintStart_toStartOf="@+id/toolbar2"
         app:layout_constraintTop_toTopOf="@+id/dots"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/undo" />
+        app:srcCompat="@drawable/undo"
+        tools:ignore="ContentDescription" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -81,127 +84,10 @@
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:scaleType="fitCenter"
-            android:visibility="visible" />
+            android:visibility="visible"
+            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout"-->
-<!--        android:layout_width="410dp"-->
-<!--        android:layout_height="104dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:visibility="gone"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/toolbar2">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/undoButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="10dp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:layout_marginEnd="10dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:onClick="undo"-->
-<!--            android:text="Undo"-->
-<!--            android:textSize="12sp" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/rotateButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="5dp"-->
-<!--            android:layout_marginLeft="5dp"-->
-<!--            android:layout_marginEnd="7dp"-->
-<!--            android:layout_marginRight="7dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:onClick="rotate"-->
-<!--            android:text="Rotate"-->
-<!--            android:textSize="12sp" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/cropButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="7dp"-->
-<!--            android:layout_marginRight="7dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:onClick="crop"-->
-<!--            android:text="Crop"-->
-<!--            android:textSize="12sp" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/saveButton"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="10dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:layout_weight="1"-->
-<!--            android:onClick="save"-->
-<!--            android:text="Save"-->
-<!--            android:textSize="12sp" />-->
-<!--    </LinearLayout>-->
-
-
-<!--    <RadioGroup-->
-<!--        android:id="@+id/radioGroup"-->
-<!--        android:layout_width="263dp"-->
-<!--        android:layout_height="41dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:layout_marginBottom="16dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:visibility="visible"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/relativeLayout2"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/relativeLayout"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/cropButton"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginEnd="@dimen/profile_radio_button_marginStartEnd"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/text_selectoredit"-->
-<!--            android:button="@null"-->
-<!--            android:fontFamily="@font/fredoka_one"-->
-<!--            android:gravity="center"-->
-<!--            android:onClick="crop"-->
-<!--            android:text="Crop"-->
-<!--            android:textColor="@drawable/editbutton_selector"-->
-<!--            android:textSize="20sp"-->
-<!--            tools:ignore="RtlCompat" />-->
-
-
-<!--        <RadioButton-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginEnd="@dimen/profile_radio_button_marginStartEnd"-->
-<!--            android:layout_weight="1.5"-->
-<!--            android:button="@null"-->
-<!--            android:clickable="false"-->
-<!--            tools:ignore="RtlCompat" />-->
-
-<!--        <RadioButton-->
-<!--            android:id="@+id/rotateButton"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginEnd="@dimen/profile_radio_button_marginStartEnd"-->
-<!--            android:layout_weight="1"-->
-<!--            android:background="@drawable/text_selectoredit"-->
-<!--            android:button="@null"-->
-<!--            android:fontFamily="@font/fredoka_one"-->
-<!--            android:gravity="center"-->
-<!--            android:onClick="rotate"-->
-<!--            android:text="Rotate"-->
-<!--            android:textColor="@drawable/editbutton_selector"-->
-<!--            android:textSize="20sp"-->
-<!--            tools:ignore="RtlCompat" />-->
-<!--    </RadioGroup>-->
 
 
     <FrameLayout
@@ -223,7 +109,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_crop" />
+            android:src="@drawable/ic_crop"
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 
     <FrameLayout
@@ -247,7 +134,8 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="10dp"
-            android:src="@drawable/ic_rotate" />
+            android:src="@drawable/ic_rotate"
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 
     <RelativeLayout
@@ -270,7 +158,7 @@
             android:background="@drawable/curved"
             android:fontFamily="@font/fredoka_one"
             android:onClick="save"
-            android:text="Save"
+            android:text="@string/save"
             android:textColor="#010B17"
             android:textSize="20sp"/>
 

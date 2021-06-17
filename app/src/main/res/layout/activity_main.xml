@@ -27,7 +27,7 @@
             android:layout_marginRight="45dp"
             android:fontFamily="@font/fredoka_one"
             android:gravity="center"
-            android:text="Edited Image"
+            android:text="@string/edited_image"
             android:textColor="#505b64"
             android:textSize="40sp"
             android:visibility="gone"
@@ -47,7 +47,8 @@
             android:layout_marginRight="2dp"
             android:layout_marginBottom="10dp"
             android:scaleType="fitCenter"
-            android:visibility="visible" />
+            android:visibility="visible"
+            tools:ignore="ContentDescription" />
 
     </RelativeLayout>
 
@@ -75,7 +76,7 @@
             android:fontFamily="@font/bungee"
             android:gravity="center"
             android:onClick="clickGallery"
-            android:text="Gallary"
+            android:text="@string/gallary"
             android:textColor="@drawable/radio_colour_text_selector"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -91,7 +92,7 @@
             android:button="@null"
             android:fontFamily="@font/bungee"
             android:gravity="center"
-            android:text="Selfie"
+            android:text="@string/selfie"
             android:onClick="clickSelfie"
             android:textColor="@drawable/radio_colour_text_selector"
             android:textSize="16sp"
@@ -106,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:fontFamily="@font/fredoka_one"
-        android:text="Choose or take"
+        android:text="@string/choose_or_take"
         android:textColor="#505b64"
         android:textSize="40sp"
         android:visibility="visible"
@@ -120,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/fredoka_one"
-        android:text="a picture"
+        android:text="@string/a_picture"
         android:textColor="#505b64"
         android:textSize="40sp"
         android:visibility="visible"

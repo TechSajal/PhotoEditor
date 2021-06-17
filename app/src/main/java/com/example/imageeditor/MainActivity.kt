@@ -19,6 +19,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import com.example.imageeditor.EditImageActivity
 import java.io.File
@@ -35,17 +36,19 @@ class MainActivity : AppCompatActivity() {
     var textviewtwo:TextView? = null
     var editedimage:TextView? = null
     @RequiresApi(api = Build.VERSION_CODES.Q)
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 1) {
-            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 photo
+
             }
+        if ( requestCode== PICK_IMAGE && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_PICK
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
         }
+
     }
 
     var currentPhotoPath: String? = null
@@ -139,18 +142,24 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Throws(IOException::class)
     fun clickSelfie(view: View?) {
-        if (checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(Manifest.permission.CAMERA), 1)
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.CAMERA), 1)
         } else {
             photo
         }
+
     }
 
     fun clickGallery(view: View?) {
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
+        if (ActivityCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
+        } else {
+            val intent = Intent()
+            intent.type = "image/*"
+            intent.action = Intent.ACTION_PICK
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
+        }
+
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -158,7 +167,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == RESULT_OK) {
                 bitmap = BitmapFactory.decodeFile(currentPhotoPath)
-                println(bitmap)
+            //    println(bitmap)
                 val contentValues = ContentValues()
                 contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "$imageFileName.jpg")
                 contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
@@ -175,16 +184,14 @@ class MainActivity : AppCompatActivity() {
                     overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
                 }
 
-        } else {
-            if (data!=null) {
-                uri1 = data.data
-                println(uri1.toString())
-                bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri1)
-                val intent = Intent(this, EditImageActivity::class.java)
-                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
-                startActivity(intent)
-            }
-
+        } else{}
+           if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+            uri1 = data!!.data
+            println(uri1.toString())
+            bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri1)
+            val intent = Intent(this, EditImageActivity::class.java)
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
+            startActivity(intent)
         }
     }
 
