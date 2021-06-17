@@ -42,11 +42,11 @@ class MainActivity : AppCompatActivity() {
                 photo
 
             }
-        if ( requestCode== PICK_IMAGE && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+        if ( requestCode== 2 && grantResults[1] == PackageManager.PERMISSION_GRANTED){
             val intent = Intent()
             intent.type = "image/*"
             intent.action = Intent.ACTION_PICK
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), 2)
         }
 
     }
@@ -55,7 +55,6 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("SimpleDateFormat")
     @Throws(IOException::class)
     private fun createImageFile(): File {
-        // Create an image file name
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
         imageFileName = "JPEG_" + timeStamp + "_"
         val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
@@ -65,24 +64,17 @@ class MainActivity : AppCompatActivity() {
             storageDir /* directory */
         )
 
-        // Save a file: path for use with ACTION_VIEW intents
         currentPhotoPath = image.absolutePath
         println(currentPhotoPath)
         return image
-    }// Error occurred while creating the File
+    }
 
-    // Continue only if the File was successfully created
-// Create the File where the photo should go
-    // Ensure that there's a camera activity to handle the intent
     private val photo: Unit
         @SuppressLint("QueryPermissionsNeeded") get() {
             val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            // Ensure that there's a camera activity to handle the intent
             if (takePictureIntent.resolveActivity(packageManager) != null) {
-                // Create the File where the photo should go
                 var photoFile: File?
                 photoFile = createImageFile()
-                // Continue only if the File was successfully created
                 val photoURI:Uri = FileProvider.getUriForFile(this, "com.example.imageeditor.fileprovider", photoFile)
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                 takePictureIntent.putExtra("android.intent.extras.CAMERA_FACING", 1)
@@ -156,8 +148,8 @@ class MainActivity : AppCompatActivity() {
         } else {
             val intent = Intent()
             intent.type = "image/*"
-            intent.action = Intent.ACTION_PICK
-            startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE)
+            intent.action = Intent.ACTION_GET_CONTENT
+            startActivityForResult(Intent.createChooser(intent, "Select Picture"), 2)
         }
 
     }
@@ -167,8 +159,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == RESULT_OK) {
                 bitmap = BitmapFactory.decodeFile(currentPhotoPath)
-            //    println(bitmap)
-                val contentValues = ContentValues()
+                 val contentValues = ContentValues()
                 contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "$imageFileName.jpg")
                 contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
                 contentValues.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
@@ -184,15 +175,15 @@ class MainActivity : AppCompatActivity() {
                     overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
                 }
 
-        } else{}
-           if (requestCode == PICK_IMAGE && resultCode == RESULT_OK) {
+        }
+        else{
+             if(requestCode == 2 && resultCode == RESULT_OK) {
             uri1 = data!!.data
-            println(uri1.toString())
-            bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri1)
+               bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri1)
             val intent = Intent(this, EditImageActivity::class.java)
             overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
             startActivity(intent)
-        }
+        } }
     }
 
     companion object {
@@ -200,6 +191,5 @@ class MainActivity : AppCompatActivity() {
         var imageFileName: String? = null
         var uri: Uri? = null
         var uri1: Uri? = null
-        const val PICK_IMAGE = 2
     }
 }

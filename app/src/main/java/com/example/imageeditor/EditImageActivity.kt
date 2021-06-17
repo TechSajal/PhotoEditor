@@ -100,34 +100,15 @@ class EditImageActivity : AppCompatActivity() {
         val matrix = Matrix()
         mCurrRotation += 90
         toRotation = mCurrRotation.toFloat()
-        val rotateAnimation = RotateAnimation(
-            fromRotation, 0f, (imageView!!.width / 2).toFloat(), (imageView!!.height / 2).toFloat()
-        )
+        val rotateAnimation = RotateAnimation(fromRotation, 0f, (imageView!!.width / 2).toFloat(), (imageView!!.height / 2).toFloat())
         rotateAnimation.duration = 1000
         rotateAnimation.fillAfter = true
         matrix.setRotate(toRotation)
         println(toRotation.toString() + "TO ROTATION")
         println(fromRotation.toString() + "FROM ROTATION")
-        if (croppedBitmap != null) {
-            cropThenRotateBitmap = Bitmap.createBitmap(
-                croppedBitmap!!,
-                0,
-                0,
-                croppedBitmap!!.width,
-                croppedBitmap!!.height,
-                matrix,
-                true
-            )
+        if (croppedBitmap != null) { cropThenRotateBitmap = Bitmap.createBitmap(croppedBitmap!!, 0, 0, croppedBitmap!!.width, croppedBitmap!!.height, matrix, true)
         } else {
-            rotateBitmap = Bitmap.createBitmap(
-                MainActivity.bitmap!!,
-                0,
-                0,
-                MainActivity.bitmap!!.width,
-                MainActivity.bitmap!!.height,
-                matrix,
-                true
-            )
+            rotateBitmap = Bitmap.createBitmap(MainActivity.bitmap!!, 0, 0, MainActivity.bitmap!!.width, MainActivity.bitmap!!.height, matrix, true)
         }
         imageView!!.setImageBitmap(MainActivity.bitmap)
         imageView!!.startAnimation(rotateAnimation)
@@ -139,13 +120,7 @@ class EditImageActivity : AppCompatActivity() {
         if (rotateBitmap != null) {
             val bytes = ByteArrayOutputStream()
             rotateBitmap!!.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
-            val path = MediaStore.Images.Media.insertImage(
-                contentResolver,
-                rotateBitmap,
-                MainActivity.imageFileName + ".jpg",
-                null
-            )
-            //            System.out.println(Uri.parse(path));
+            val path = MediaStore.Images.Media.insertImage(contentResolver, rotateBitmap, MainActivity.imageFileName + ".jpg", null)
             MainActivity.uri = Uri.parse(path)
             CropImage.activity(MainActivity.uri)
                 .start(this)
@@ -293,8 +268,6 @@ class EditImageActivity : AppCompatActivity() {
         @JvmField
         var croppedBitmap: Bitmap? = null
         var resultUri: Uri? = null
-        var unChangedBitmap: Bitmap? = null
-        var bitmapBasic: Bitmap? = null
     }
 
 
